@@ -25,7 +25,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\app\services\" />
+    <None Remove="ClientApp\app\services\feature.service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\services\feature.service.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
