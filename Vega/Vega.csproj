@@ -24,6 +24,11 @@
     <Content Remove="ClientApp\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\20180215102418_AddVehicle.cs" />
+    <Compile Remove="Migrations\20180215102418_AddVehicle.Designer.cs" />
+  </ItemGroup>
+
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">
