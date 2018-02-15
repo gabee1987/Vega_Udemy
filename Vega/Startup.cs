@@ -26,7 +26,7 @@ namespace Vega
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper();
-            services.AddDbContext<ModelDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
+            services.AddDbContext<VegalDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddMvc();
         }
 

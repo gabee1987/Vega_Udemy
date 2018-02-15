@@ -8,7 +8,7 @@ using Vega.Models;
 
 namespace Vega.Migrations
 {
-    [DbContext(typeof(ModelDbContext))]
+    [DbContext(typeof(VegalDbContext))]
     [Migration("20180201153430_InitialMigriation")]
     partial class InitialMigriation
     {

@@ -10,7 +10,7 @@ using Vega.Models;
 
 namespace Vega.Migrations
 {
-    [DbContext(typeof(ModelDbContext))]
+    [DbContext(typeof(VegalDbContext))]
     partial class ModelDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

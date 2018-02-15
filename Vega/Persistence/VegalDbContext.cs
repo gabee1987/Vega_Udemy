@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 
 namespace Vega.Models
 {
-    public class ModelDbContext : DbContext
+    public class VegalDbContext : DbContext
     {
+        public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<Make> Makes { get; set; }
+        public DbSet<Model> Models { get; set; }
         public DbSet<Feature> Features { get; set; }
 
-        public ModelDbContext(DbContextOptions<ModelDbContext> options)
+        public VegalDbContext(DbContextOptions<VegalDbContext> options)
             : base(options)
         {
 

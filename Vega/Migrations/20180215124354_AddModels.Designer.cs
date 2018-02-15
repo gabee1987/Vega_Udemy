@@ -11,8 +11,8 @@ using Vega.Models;
 namespace Vega.Migrations
 {
     [DbContext(typeof(VegalDbContext))]
-    [Migration("20180215102734_AddVehicle")]
-    partial class AddVehicle
+    [Migration("20180215124354_AddModels")]
+    partial class AddModels
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

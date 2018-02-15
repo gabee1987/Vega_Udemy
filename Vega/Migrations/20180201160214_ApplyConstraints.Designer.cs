@@ -10,7 +10,7 @@ using Vega.Models;
 
 namespace Vega.Migrations
 {
-    [DbContext(typeof(ModelDbContext))]
+    [DbContext(typeof(VegalDbContext))]
     [Migration("20180201160214_ApplyConstraints")]
     partial class ApplyConstraints
     {
