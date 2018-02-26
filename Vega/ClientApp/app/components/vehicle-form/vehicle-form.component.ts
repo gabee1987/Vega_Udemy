@@ -26,11 +26,11 @@ export class VehicleFormComponent implements OnInit {
                 this.features = features);
         }
 
-    onMakeChange() {
-        //console.log("VEHICLE", this.vehicle);
-        var selectedMake = this.makes.find(m => m.id == this.vehicle.make)
-        this.models = selectedMake ? selectedMake.models : [];
-    }
+        onMakeChange() {
+            //console.log("VEHICLE", this.vehicle);
+            var selectedMake = this.makes.find(m => m.id == this.vehicle.make)
+            this.models = selectedMake ? selectedMake.models : [];
+        }
     
 
     
