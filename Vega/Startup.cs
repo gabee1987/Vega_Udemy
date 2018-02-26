@@ -28,6 +28,8 @@ namespace Vega
         {
             // Add Scoped service (A single instance of repository for each request)
             services.AddScoped<IVehicleRepository, VehicleRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
             services.AddAutoMapper();
 
             // Add Database context
