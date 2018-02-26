@@ -1,3 +1,4 @@
+using Vega.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,8 +26,14 @@ namespace Vega
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Add Scoped service (A single instance of repository for each request)
+            services.AddScoped<IVehicleRepository, VehicleRepository>();
             services.AddAutoMapper();
+
+            // Add Database context
             services.AddDbContext<VegalDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
+
+            // Add FrameWork services
             services.AddMvc();
         }
 

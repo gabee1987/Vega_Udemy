@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Vega.Persistence;
+using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using Vega.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -15,11 +16,13 @@ namespace Vega.Controllers
     {
         private readonly IMapper mapper;
         private readonly VegalDbContext context;
+        private readonly IVehicleRepository repository;
 
-        public VehiclesController(IMapper mapper, VegalDbContext context)
+        public VehiclesController(IMapper mapper, VegalDbContext context, IVehicleRepository repository)
         {
             this.mapper = mapper;
             this.context = context;
+            this.repository = repository;
         }
 
         [HttpPost]
@@ -50,12 +53,7 @@ namespace Vega.Controllers
             //await context.Models.Include(m => m.Make).SingleOrDefaultAsync(m => m.Id == vehicle.ModelId);
 
 
-            vehicle = await context.Vehicles
-                .Include(v => v.Features)
-                    .ThenInclude(vf => vf.Feature)
-                .Include(v => v.Model)
-                    .ThenInclude(m => m.Make)
-                .SingleOrDefaultAsync(v => v.Id == vehicle.Id);
+            vehicle = await repository.GetVehicle(vehicle.Id);
 
 
             var result = mapper.Map<Vehicle, VehicleResource>(vehicle);
@@ -76,12 +74,7 @@ namespace Vega.Controllers
             // Return only ids of Features
             //var vehicle = await context.Vehicles.Include(v => v.Features).SingleOrDefaultAsync(v => v.Id == id);
 
-            var vehicle = await context.Vehicles
-                .Include(v => v.Features)
-                    .ThenInclude(vf => vf.Feature)
-                .Include(v => v.Model)
-                    .ThenInclude(m => m.Make)
-                .SingleOrDefaultAsync(v => v.Id == id);
+            var vehicle = await repository.GetVehicle(id);
 
             if (vehicle == null)
                 return NotFound();
@@ -114,12 +107,16 @@ namespace Vega.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetVehicle(int id)
         {
-            var vehicle = await context.Vehicles
-                .Include(v => v.Features)
-                    .ThenInclude(vf => vf.Feature)
-                .Include(v => v.Model)
-                    .ThenInclude(m => m.Make)
-                .SingleOrDefaultAsync(v => v.Id == id);
+            // Get vehicle object without repository
+            //var vehicle = await context.Vehicles
+            //    .Include(v => v.Features)
+            //        .ThenInclude(vf => vf.Feature)
+            //    .Include(v => v.Model)
+            //        .ThenInclude(m => m.Make)
+            //    .SingleOrDefaultAsync(v => v.Id == id);
+
+            // Get vehicle with repository (with dependency injection)
+            var vehicle = await repository.GetVehicle(id);
 
             if (vehicle == null)
                 return NotFound();

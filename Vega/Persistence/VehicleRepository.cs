@@ -7,7 +7,7 @@ using Vega.Models;
 
 namespace Vega.Persistence
 {
-    public class VehicleRepository
+    public class VehicleRepository : IVehicleRepository
     {
         private readonly VegalDbContext context;
 
