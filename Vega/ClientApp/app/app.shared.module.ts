@@ -33,6 +33,7 @@ import { AppErrorHandler } from './app.error-handler';
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
             { path: 'vehicles/new', component: VehicleFormComponent},
+            { path: 'vehicles/:id', component: VehicleFormComponent},
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: '**', redirectTo: 'home' }

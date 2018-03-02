@@ -14,15 +14,17 @@ const treeShakableModules = [
     '@angular/router',
     'zone.js',
     'ng2-toasty',
-    'ng2-toasty/bundles/style-bootstrap.css'
+    'underscore'
+    
 ];
 const nonTreeShakableModules = [
     'bootstrap',
     'bootstrap/dist/css/bootstrap.css',
+    'ng2-toasty/bundles/style-bootstrap.css',
     'es6-promise',
     'es6-shim',
     'event-source-polyfill',
-    'jquery',
+    'jquery'
 ];
 const allModules = treeShakableModules.concat(nonTreeShakableModules);
 
